@@ -5,11 +5,13 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-dotenv": "^3.2.0",
+    "react-native-elements": "^3.4.2",
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-ionicons": "^4.6.5",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
-    "rn-nodeify": "^10.3.0"
+    "rn-nodeify": "^10.3.0",
+    "react-native-safe-area-context": "3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

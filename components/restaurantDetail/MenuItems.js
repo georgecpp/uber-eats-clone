@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet, Image, ScrollView} from "react-native";
+import {View, Text, StyleSheet, Image} from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { Divider } from "react-native-elements/dist/divider/Divider";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
@@ -15,7 +16,43 @@ const foods = [
         image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
         description: 'Yummi X2',
         price: '$14.50'
-    }
+    },
+    {
+        title: 'Lasagna',
+        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
+        description: 'Yummi',
+        price: '$13.60'
+    },
+    {
+        title: 'Lasagna',
+        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
+        description: 'Yummi',
+        price: '$13.60'
+    },
+    {
+        title: 'Lasagna',
+        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
+        description: 'Yummi',
+        price: '$13.60'
+    },
+    {
+        title: 'Lasagna',
+        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
+        description: 'Yummi',
+        price: '$13.60'
+    },
+    {
+        title: 'Spaghetti',
+        image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
+        description: 'Yummi X2',
+        price: '$14.50'
+    },
+    {
+        title: 'Spaghetti',
+        image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
+        description: 'Yummi X2',
+        price: '$14.50'
+    },
 ];
 
 const styles = StyleSheet.create({
@@ -29,8 +66,6 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontWeight: "700"
     }, 
-
-
 })
 export default function MenuItems() {
     return (

@@ -8,11 +8,11 @@ const items = [
     },
     {
         image: require("../../assets/images/soft-drink.png"),
-        text: "Soft Drinks",
+        text: "Drinks",
     },
     {
         image: require("../../assets/images/bread.png"),
-        text: "Bakery Items",
+        text: "Bakery",
     },
     {
         image: require("../../assets/images/fast-food.png"),
@@ -24,7 +24,7 @@ const items = [
     },
     {
         image: require("../../assets/images/coffee.png"),
-        text: "Coffee & Tea",
+        text: "Coffee",
     },
     {
         image: require("../../assets/images/desserts.png"),
@@ -34,7 +34,7 @@ const items = [
 export default function Categories() {
     return (
         <View style={{
-            marginTop: 5,
+            marginTop: 10,
             backgroundColor:"#fff",
             paddingVertical: 10,
             paddingLeft: 20,
@@ -47,7 +47,10 @@ export default function Categories() {
                             height:40,
                             resizeMode: 'contain'
                         }} />
-                        <Text style ={{fontSize:13, fontWeight: "bold" }}>{item.text}</Text>
+                        <View style={{paddingLeft:15, width:70}}>
+                             <Text style ={{fontSize:13, fontWeight: "bold" }}>{item.text}</Text>
+                        </View>
+                       
                     </View>
                 ))}
             </ScrollView>

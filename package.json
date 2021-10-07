@@ -5,7 +5,7 @@
     "expo": "~42.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "~0.63.4",
     "react-native-bouncy-checkbox": "^2.1.4",
     "react-native-dotenv": "^3.2.0",
     "react-native-elements": "^3.4.2",
@@ -16,18 +16,26 @@
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "rn-nodeify": "^10.3.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.3.1",
+    "expo-splash-screen": "~0.11.2",
+    "expo-status-bar": "~1.0.4",
+    "expo-updates": "~0.8.1",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-screens": "~3.4.0",
+    "react-native-unimodules": "0.14.10"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3"
   },
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
-  "private": true
+  "private": true,
+  "name": "uber-eats-clone",
+  "version": "1.0.0"
 }

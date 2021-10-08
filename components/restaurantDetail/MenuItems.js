@@ -3,57 +3,9 @@ import {View, Text, StyleSheet, Image} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Divider } from "react-native-elements/dist/divider/Divider";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch, useSelector } from "react-redux";
 
-const foods = [
-    {
-        title: 'Lasagna',
-        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
-        description: 'Yummi',
-        price: '$13.60'
-    },
-    {
-        title: 'Spaghetti',
-        image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
-        description: 'Yummi X2',
-        price: '$14.50'
-    },
-    {
-        title: 'Lasagna',
-        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
-        description: 'Yummi',
-        price: '$13.60'
-    },
-    {
-        title: 'Lasagna',
-        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
-        description: 'Yummi',
-        price: '$13.60'
-    },
-    {
-        title: 'Lasagna',
-        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
-        description: 'Yummi',
-        price: '$13.60'
-    },
-    {
-        title: 'Lasagna',
-        image: 'https://retete.unica.ro/wp-content/uploads/2013/10/lasagna.jpg',
-        description: 'Yummi',
-        price: '$13.60'
-    },
-    {
-        title: 'Spaghetti',
-        image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
-        description: 'Yummi X2',
-        price: '$14.50'
-    },
-    {
-        title: 'Spaghetti',
-        image: 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-3-1200.jpg',
-        description: 'Yummi X2',
-        price: '$14.50'
-    },
-];
+
 
 const styles = StyleSheet.create({
     menuItemStyle: {
@@ -67,15 +19,36 @@ const styles = StyleSheet.create({
         fontWeight: "700"
     }, 
 })
-export default function MenuItems() {
+export default function MenuItems({restaurantName, foods, hideCheckbox, marginLeft}) {
+    const dispatch = useDispatch();
+
+    const selectItem = (item, checkboxValue) => dispatch({
+        type: "ADD_TO_CART",
+        payload: {... item, restaurantName: restaurantName, checkboxValue: checkboxValue}
+    });
+
+    const cartItems = useSelector(
+        (state) => state.cartReducer.selectedItems.items
+    );
+
+    const isFoodInCart = (food, cartItems) => {
+        return Boolean(cartItems.find((item) => item.title === food.title));
+    }
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {foods.map((food,index) => (
             <View key={index}>
                 <View style={styles.menuItemStyle}>
-                <BouncyCheckbox iconStyle={{borderColor: "lightgray", borderRadius: 0}} fillColor="green"/>
+                {hideCheckbox ? (<></>) : (
+                    <BouncyCheckbox 
+                    iconStyle={{borderColor: "lightgray", borderRadius: 0}} 
+                    fillColor="green"
+                    isChecked={isFoodInCart(food, cartItems)}
+                    onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+                    />
+                )}
                 <FoodInfo food={food} />
-                <FoodImage food={food}/>
+                <FoodImage food={food} marginLeft={marginLeft ? marginLeft : 0}/>
                 </View>
                 <Divider width={0.5} orientation="vertical" style={{marginHorizontal:20}} />
             </View>
@@ -92,8 +65,8 @@ const FoodInfo = (props) => (
     </View>
 )
 
-const FoodImage = (props) => (
+const FoodImage = ({marginLeft, ...props}) => (
     <View>
-        <Image source={{uri: props.food.image}} style={{width: 100, height: 100, borderRadius: 8}}/>
+        <Image source={{uri: props.food.image}} style={{width: 100, height: 100, borderRadius: 8, marginLeft: marginLeft}}/>
     </View>
 )

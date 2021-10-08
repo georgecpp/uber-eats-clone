@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374107241045",
+    "project_id": "rn-uber-eats-clone-c6832",
+    "storage_bucket": "rn-uber-eats-clone-c6832.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374107241045:android:11b377182e5d9bf0c6b2dc",
+        "android_client_info": {
+          "package_name": "com.steelparrot.UberEatsClone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374107241045-jd14bt236ts84dgnp6q3s39tbdnb8v4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj9L_WbmYvH_PogH8E-Zo0zq4PrC4YvaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374107241045-jd14bt236ts84dgnp6q3s39tbdnb8v4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

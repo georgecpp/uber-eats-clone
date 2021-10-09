@@ -40,8 +40,8 @@ export default function RestaurantDetail({route, navigation}) {
             <Divider width={1.8} style={{marginVertical: 20}} />
             <View style={{flex: 1}}>
                 <MenuItems restaurantName={route.params.name} foods={foods}/>
-                <ViewCart navigation={navigation}/>
             </View>
+            <ViewCart navigation={navigation}/>
         </View>
     );
 }

@@ -7,10 +7,12 @@ import { StyleSheet } from "react-native";
 import OrderItem from "./OrderItem";
 // import firebase from "../../firebase"; // ONLY FOR WEB BASED EXPO APPROACH.
 import firestore from "@react-native-firebase/firestore"; // FOR NATIVE CLI REACT NATIVE
+import LottieView from "lottie-react-native";
 
 export default function ViewCart({navigation}) {
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     const {items, restaurantName} = useSelector((state) => state.cartReducer.selectedItems);
@@ -24,6 +26,7 @@ export default function ViewCart({navigation}) {
     const totalUSD = formatter.format(total);
 
     const addOrderToFirebase = () => {
+        setLoading(true);
         firestore()
         .collection('orders')
         .add({
@@ -32,12 +35,12 @@ export default function ViewCart({navigation}) {
             createdAt: firestore.FieldValue.serverTimestamp(),
         })
         .then(() => {
-             setModalVisible(false);
-             console.log("ORDER DONE");
-             navigation.navigate("OrderCompleted");
+             setTimeout(() => {
+                setLoading(false);
+                navigation.navigate("OrderCompleted");
+             }, 2500);
         });
-
-    }
+    };
 
     const styles = StyleSheet.create({
         modalContainer: {
@@ -98,7 +101,11 @@ export default function ViewCart({navigation}) {
                                 width: 300,
                                 position: "relative"
                             }}
-                            onPress= {() => addOrderToFirebase()}>
+                            onPress= {() => {
+                                addOrderToFirebase();
+                                setModalVisible(false);
+                            }}
+                            >
                                 <Text style={{color:"white", fontSize: 20}}>Checkout</Text>
                                 <Text style={{position: "absolute", right: 20, color: "white", fontSize: 15, top: 17
                                 }}>{total ? totalUSD : ""}</Text>
@@ -153,6 +160,28 @@ export default function ViewCart({navigation}) {
             </View>
             ) : (
             <></>
+            )}
+            {loading ? (
+            <View
+            style={{
+                backgroundColor: "black",
+                position: "absolute",
+                opacity: 0.6,
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                width: "100%",
+            }}
+            >
+                <LottieView
+                    style={{ height: 200 }}
+                    source={require("../../assets/animations/scanner.json")}
+                    autoPlay
+                    speed={3}
+                        />
+            </View>
+            ) : (
+                <></>
             )}
         </>
     );
